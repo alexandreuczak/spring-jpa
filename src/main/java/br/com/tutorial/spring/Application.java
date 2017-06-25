@@ -2,6 +2,7 @@ package br.com.tutorial.spring;
 
 import java.util.stream.Stream;
 
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +20,24 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	DataSource dataSource;
 	
-	@Autowired
+	@Inject
 	PessoaRepository pessoaRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public void run(String... arg0) throws Exception {
 		System.out.println("DataSource = " + dataSource);
-		
+		/*
+		System.out.println("\n1. save()...");
+		Pessoa p1 = new Pessoa();
+		p1.setNome("Teste");
+		p1.setApelido("T");
+		pessoaRepository.save(p1);*/
+
 		System.out.println("\n1. findAll()...");
 		for(Pessoa pessoa : pessoaRepository.findAll()){
 			System.out.println(pessoa);
