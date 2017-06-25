@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "Pessoa")
 public class Pessoa {
 
 	@Id
@@ -47,4 +47,10 @@ public class Pessoa {
 		this.apelido = apelido;
 	}
 	
+	@Override
+	public String toString() {
+
+		return "{ codigo: " + this.getCodigo().toString() + ", " + "nome: " + this.getNome() + ", " + "apelido: "
+				+ this.getApelido() + " }";
+	}
 }
